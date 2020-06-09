@@ -6,9 +6,9 @@ public class Admin extends User {
 	private ArrayList<Civilian> civiliansList = new ArrayList<>();
 
 	
-	public Admin(String username, String password, String adminID, ArrayList<Doctor> doctorsList,
+	public Admin(String username, String password, String name, String adminID, ArrayList<Doctor> doctorsList,
 			ArrayList<Civilian> civiliansList) {
-		super(username, password);
+		super(username, password, name);
 		this.adminID = adminID;
 		this.doctorsList = doctorsList;
 		this.civiliansList = civiliansList;
