@@ -1,3 +1,4 @@
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -47,9 +48,11 @@ public class LoginPanel extends JFrame {
 		loginButton = new JButton("Login");
 		login.add(loginLabel);
 		login.add(loginUsername);
+		login.add(Box.createRigidArea(new Dimension(0,30)));
 		login.add(loginPassword);
 		login.add(loginButton);
 		loginButton.setAlignmentX(CENTER_ALIGNMENT);
+		login.add(Box.createRigidArea(new Dimension(0,30)));
 		
 		//Civilian Register panel:
 		civilianRegisterLabel = new JLabel("Civilian Register:");
@@ -59,7 +62,9 @@ public class LoginPanel extends JFrame {
 		civilianRegisterButton = new JButton("Register");
 		civilianRegister.add(civilianRegisterLabel);
 		civilianRegister.add(civilianRegisterName);
+		civilianRegister.add(Box.createRigidArea(new Dimension(0,15)));
 		civilianRegister.add(civilianRegisterUsername);
+		civilianRegister.add(Box.createRigidArea(new Dimension(0,15)));
 		civilianRegister.add(civilianRegisterPassword);
 		civilianRegister.add(civilianRegisterButton);
 		civilianRegisterButton.setAlignmentX(CENTER_ALIGNMENT);
@@ -84,6 +89,7 @@ public class LoginPanel extends JFrame {
 		ButtonListener listener = new ButtonListener();
 		loginButton.addActionListener(listener);
 		civilianRegisterButton.addActionListener(listener);
+		doctorRegisterButton.addActionListener(listener);
 		
 	}
 	
