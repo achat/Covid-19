@@ -5,16 +5,22 @@ import javax.swing.*;
 
 public class LoginPanel extends JFrame {
 	private JPanel login;
-	private JPanel register;
+	private JPanel civilianRegister;
+	private JPanel doctorRegister;
 	private JTextField loginUsername;
 	private JTextField loginPassword;
-	private JTextField registerUsername;
-	private JTextField registerPassword;
-	private JTextField registerName;
+	private JTextField civilianRegisterUsername;
+	private JTextField civilianRegisterPassword;
+	private JTextField civilianRegisterName;
+	private JTextField doctorRegisterUsername;
+	private JTextField doctorRegisterPassword;
+	private JTextField doctorRegisterName;
 	private JLabel loginLabel;
-	private JLabel registerLabel;
+	private JLabel civilianRegisterLabel;
+	private JLabel doctorRegisterLabel;
 	private JButton loginButton;
-	private JButton registerButton;
+	private JButton civilianRegisterButton;
+	private JButton doctorRegisterButton;
 	private User user;
 	private Admin admin;
 	
@@ -22,14 +28,19 @@ public class LoginPanel extends JFrame {
 		this.user = user;
 		this.admin = admin;
 		
+		//Main Frame:
 		login = new JPanel();
-		register = new JPanel();
-		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
-		login.setLayout(new BoxLayout(login, BoxLayout.PAGE_AXIS));
-		register.setLayout(new BoxLayout(register, BoxLayout.PAGE_AXIS));
+		civilianRegister = new JPanel();
+		doctorRegister = new JPanel();
+		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
+		login.setLayout(new BoxLayout(login, BoxLayout.Y_AXIS));
+		civilianRegister.setLayout(new BoxLayout(civilianRegister, BoxLayout.Y_AXIS));
+		doctorRegister.setLayout(new BoxLayout(doctorRegister, BoxLayout.Y_AXIS));
 		this.add(login);
-		this.add(register);
+		this.add(civilianRegister);
+		this.add(doctorRegister);
 		
+		//Login panel:
 		loginLabel = new JLabel("Login:");
 		loginUsername = new JTextField("Username");
 		loginPassword = new JTextField("Password");
@@ -38,17 +49,33 @@ public class LoginPanel extends JFrame {
 		login.add(loginUsername);
 		login.add(loginPassword);
 		login.add(loginButton);
+		loginButton.setAlignmentX(CENTER_ALIGNMENT);
 		
-		registerLabel = new JLabel("Register:");
-		registerName = new JTextField("Name");
-		registerUsername = new JTextField("Username");
-		registerPassword = new JTextField("Password");
-		registerButton = new JButton("Register");
-		register.add(registerLabel);
-		register.add(registerName);
-		register.add(registerUsername);
-		register.add(registerPassword);
-		register.add(registerButton);
+		//Civilian Register panel:
+		civilianRegisterLabel = new JLabel("Civilian Register:");
+		civilianRegisterName = new JTextField("Name");
+		civilianRegisterUsername = new JTextField("Username");
+		civilianRegisterPassword = new JTextField("Password");
+		civilianRegisterButton = new JButton("Register");
+		civilianRegister.add(civilianRegisterLabel);
+		civilianRegister.add(civilianRegisterName);
+		civilianRegister.add(civilianRegisterUsername);
+		civilianRegister.add(civilianRegisterPassword);
+		civilianRegister.add(civilianRegisterButton);
+		civilianRegisterButton.setAlignmentX(CENTER_ALIGNMENT);
+		
+		//Doctor Register panel:
+		doctorRegisterLabel = new JLabel("Doctor Register:");
+		doctorRegisterName = new JTextField("Name");
+		doctorRegisterUsername = new JTextField("Username");
+		doctorRegisterPassword = new JTextField("Password");
+		doctorRegisterButton = new JButton("Register");
+		doctorRegister.add(doctorRegisterLabel);
+	    doctorRegister.add(doctorRegisterName);
+		doctorRegister.add(doctorRegisterUsername);
+		doctorRegister.add(doctorRegisterPassword);
+		doctorRegister.add(doctorRegisterButton);
+		doctorRegisterButton.setAlignmentX(CENTER_ALIGNMENT);
 		
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -56,21 +83,21 @@ public class LoginPanel extends JFrame {
 		this.setSize(600, 600);
 		ButtonListener listener = new ButtonListener();
 		loginButton.addActionListener(listener);
-		registerButton.addActionListener(listener);
+		civilianRegisterButton.addActionListener(listener);
 		
 	}
 	
 	class ButtonListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
-			if(e.getSource().equals(registerButton)){
+			if(e.getSource().equals(civilianRegisterButton)){
 				for(User u: admin.getCiviliansList()){
-					if(u.getUsername() == registerUsername.getText()){
+					if(u.getUsername() == civilianRegisterUsername.getText()){
 						System.out.println("Username already exists");
 					}else{
-						user.setUsername(registerUsername.getText());
-						user.setPassword(registerPassword.getText());
-						user.setName(registerName.getText());
+						user.setUsername(civilianRegisterUsername.getText());
+						user.setPassword(civilianRegisterPassword.getText());
+						user.setName(civilianRegisterName.getText());
 					}
 				}
 			}

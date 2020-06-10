@@ -11,11 +11,10 @@ public class Doctor extends User {
 		this.patientsList = patientsList;
 	}
 	
-	public void viewPatients() {
-		for (Civilian patient: patientsList) {
-			System.out.println(patient.getName());
-		}
+	public ArrayList<Civilian> viewPatients(){
+		return patientsList;
 	}
+		
 	
 	public void addPatient(Civilian c){
 		patientsList.add(c);
