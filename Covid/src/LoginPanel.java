@@ -1,6 +1,8 @@
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -51,7 +53,24 @@ public class LoginPanel {
 		
 		JButton btnSignIn = new JButton("Sign in");
 		btnSignIn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource().equals(btnSignIn)){
+					if(textField.getText().equals(admin.getUsername())&& passwordField.getPassword().toString().equals(admin.getPassword())){
+						adminCheckGUI aGUI = new adminCheckGUI(admin);
+					}
+					for(Civilian aCivilian: admin.getCiviliansList()){
+						if(aCivilian.getUsername().equals(textField.getText()) && aCivilian.getPassword().equals(passwordField.getPassword().toString())){
+							CivilianGUI cGUI = new CivilianGUI(aCivilian);
+						}
+					}
+					for(Doctor aDoctor: admin.getDoctorsList()){
+						if(aDoctor.getUsername().equals(textField.getText()) && aDoctor.getPassword().equals(passwordField.getPassword().toString())){
+							DoctorGUI dGUI = new DoctorGUI(aDoctor);
+						}else{
+							JOptionPane.showMessageDialog(null, "Incorrect Username or Password.");
+						}
+					}
+				}
 			}
 		});
 		
@@ -79,6 +98,28 @@ public class LoginPanel {
 		JButton btnSignUp = new JButton("Sign up");
 		btnSignUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(e.getSource().equals(btnSignUp)){
+					if(doctor){
+						for(Doctor aDoctor: admin.getDoctorsList()){
+							if(aDoctor.getUsername().equals(textField_3.getText())||textField_3.equals(admin.getUsername())){
+								JOptionPane.showMessageDialog(null, "Username already exists. Try again.");
+							}else {
+								Doctor d = new Doctor(textField_3.getText(), passwordField.getPassword().toString(), textField_2.getText(), null);
+								admin.addDoctor(d);
+							}
+						}
+						
+					}else {
+						for(Civilian aCivilian: admin.getCiviliansList()){
+							if(aCivilian.getUsername().equals(textField_3.getText())||textField_3.equals(admin.getUsername())){
+								JOptionPane.showMessageDialog(null, "Username already exists. Try again.");
+							}else {
+								Civilian c = new Civilian(textField_3.getText(), passwordField.getPassword().toString(), textField_2.getText(), 0, null);
+								admin.addCivilian(c);
+							}
+						}
+					}
+			    }
 			}
 		});
 		
