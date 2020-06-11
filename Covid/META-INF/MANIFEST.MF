@@ -5,3 +5,5 @@ Bundle-SymbolicName: Covid
 Bundle-Version: 1.0.0.qualifier
 Export-Package: .
 Require-Bundle: org.eclipse.swt
+Bundle-ClassPath: .,
+ swing2swt.jar
