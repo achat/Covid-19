@@ -1,25 +1,35 @@
-
 import javax.swing.JFrame;
-import javax.swing.BorderFactory;
-import javax.swing.JCheckBox;
-import java.awt.BorderLayout;
-import javax.swing.JPanel;
-import javax.swing.border.Border;
-import javax.swing.JList;
-import java.awt.GridLayout;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.layout.FormSpecs;
+import javax.swing.JCheckBox;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Questionnaire extends JFrame {
+import javax.swing.JButton;
+
+public class Questionnaire extends JFrame
+{
+
+	
+	private int nOfSymptoms=0;
+	
+	
 	public Questionnaire() {
+				
 		
-		JPanel panel = new JPanel();
-		String title = "Questionnaire";
-		Border border = BorderFactory.createTitledBorder(title);
-		getContentPane().add(panel, BorderLayout.CENTER);
-		panel.setLayout(new FormLayout(new ColumnSpec[] {
+			getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
+						
+				FormSpecs.RELATED_GAP_COLSPEC,
+				FormSpecs.DEFAULT_COLSPEC,
+				FormSpecs.RELATED_GAP_COLSPEC,
+				FormSpecs.DEFAULT_COLSPEC,
+				FormSpecs.RELATED_GAP_COLSPEC,
+				FormSpecs.DEFAULT_COLSPEC,
 				FormSpecs.RELATED_GAP_COLSPEC,
 				FormSpecs.DEFAULT_COLSPEC,
 				FormSpecs.RELATED_GAP_COLSPEC,
@@ -33,6 +43,7 @@ public class Questionnaire extends JFrame {
 				FormSpecs.RELATED_GAP_COLSPEC,
 				FormSpecs.DEFAULT_COLSPEC,},
 			new RowSpec[] {
+					
 				FormSpecs.RELATED_GAP_ROWSPEC,
 				FormSpecs.DEFAULT_ROWSPEC,
 				FormSpecs.RELATED_GAP_ROWSPEC,
@@ -51,36 +62,114 @@ public class Questionnaire extends JFrame {
 				FormSpecs.DEFAULT_ROWSPEC,
 				FormSpecs.RELATED_GAP_ROWSPEC,
 				FormSpecs.DEFAULT_ROWSPEC,}));
+			
 		
-		JCheckBox c = new JCheckBox("Εχεις έρθει σε επαφή με επιβεββαιωμένο κρούσμα;");
-		panel.add(c, "12, 2");
+		JCheckBox c7 = new JCheckBox("Fever or chills?");
+		getContentPane().add(c7, "12, 2");
+		c7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(c7.isSelected()) {
+					nOfSymptoms++;
+				}
+			}
+		}); 
 		
-		JCheckBox c1 = new JCheckBox("Έχεις πυρετό;");
-		panel.add(c1, "12, 4");
+		JCheckBox c = new JCheckBox("Cough?");
+		getContentPane().add(c, "12, 4");
+		c.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(c.isSelected()) {
+					nOfSymptoms++;
+				}
+			}
+		}); 
 		
-		JCheckBox c2 = new JCheckBox("Έχεις βήχα;");
-		panel.add(c2, "12, 6");
+		JCheckBox c1 = new JCheckBox("Shortness of breath or difficulty breathing?");
+		getContentPane().add(c1, "12, 6");
+		c1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(c1.isSelected()) {
+					nOfSymptoms++;
+				}
+			}
+		}); 
 		
-		JCheckBox c3 = new JCheckBox("Έχεις παρουσιάσει συμπτώματα ανοσμίας;");
-		panel.add(c3, "12, 8");
+		JCheckBox c2 = new JCheckBox("Fatigue?");
+		getContentPane().add(c2, "12, 8");
+		c2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(c2.isSelected()) {
+					nOfSymptoms++;
+				}
+			}
+		}); 
 		
-		JCheckBox c4 = new JCheckBox("Έχεις απώλεια γεύσης;");
-		panel.add(c4, "12, 10");
+		JCheckBox c3 = new JCheckBox("Muscle or body aches?");
+		getContentPane().add(c3, "12, 10");
+		c3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(c3.isSelected()) {
+					nOfSymptoms++;
+				}
+			}
+		}); 
 		
-		JCheckBox c5 = new JCheckBox("Έχεις ταξιδέψει στο εξωτερικό πρόσφατα;");
-		panel.add(c5, "12, 12");
+		JCheckBox c4 = new JCheckBox("Headache?");
+		getContentPane().add(c4, "12, 12");
+		c4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(c4.isSelected()) {
+					nOfSymptoms++;
+				}
+			}
+		}); 
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("Έχεις δυσκολία στην αναπνοή;");
-		panel.add(chckbxNewCheckBox, "12, 14");
+		JCheckBox c5 = new JCheckBox("New loss of taste or smell?");
+		getContentPane().add(c5, "12, 14");
+		c5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(c5.isSelected()) {
+					nOfSymptoms++;
+				}
+			}
+		}); 
 		
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Έχεις μυαλγίες;");
-		panel.add(chckbxNewCheckBox_1, "12, 16");
+		JCheckBox c6 = new JCheckBox("Nausea or vomiting?");
+		getContentPane().add(c6, "12, 16");
+		c6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(c6.isSelected()) {
+					nOfSymptoms++;
+				}
+			}
+		}); 
 		
-		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("Έχεις συμπτώματα καταβολής;");
-		panel.add(chckbxNewCheckBox_2, "12, 18");
+		JCheckBox c8 = new JCheckBox("Soreness?");
+		getContentPane().add(c8, "12, 18");
+		c8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(c8.isSelected()) {
+					nOfSymptoms++;
+				}
+			}
+		}); 
+		
+		JButton btn = new JButton("Submit");
+		getContentPane().add(btn, "18, 18");
+		btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent i) {
+				if(i.getSource().equals(btn)){
+					if(nOfSymptoms >= 6) {
+						Civilian.setRiskStatus(nOfSymptoms);
+					}
+				}
+					
+				}
+			}
+		});
 		
 		
-		
-	}
-
-}
+			
+			
+			
+		}
