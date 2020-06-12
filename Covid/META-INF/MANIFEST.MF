@@ -7,4 +7,5 @@ Export-Package: .
 Require-Bundle: org.eclipse.swt,
  org.eclipse.wb.swing.FormLayout.lib
 Bundle-ClassPath: .,
- swing2swt.jar
+ swing2swt.jar,
+ jgoodies-forms-1.8.0.jar
