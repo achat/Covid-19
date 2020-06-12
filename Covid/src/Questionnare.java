@@ -19,7 +19,7 @@ public class Questionnaire extends JFrame
 	private int nOfSymptoms=0;
 	
 	
-	public Questionnaire() {
+	public Questionnaire(Civilian civilian) {
 				
 		
 			getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
