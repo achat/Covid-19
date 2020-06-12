@@ -15,23 +15,14 @@ import javax.swing.JButton;
 public class Questionnaire extends JFrame
 {
 
-<<<<<<< HEAD
 	private Civilian civilian;
 	private int nOfSymptoms=0;
 	
 	
 	public Questionnaire(Civilian civilian) {
 				
-		    this.civilian = civilian;
-=======
-	
-	private int nOfSymptoms=0;
-	
-	
-	public Questionnaire() {
+		 this.civilian = civilian;
 				
-		
->>>>>>> f5fd9698dd887eab696622b7963f35d91ae12823
 			getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
 						
 				FormSpecs.RELATED_GAP_COLSPEC,
@@ -170,7 +161,7 @@ public class Questionnaire extends JFrame
 			public void actionPerformed(ActionEvent i) {
 				if(i.getSource().equals(btn)){
 					if(nOfSymptoms >= 6) {
-<<<<<<< HEAD
+
 						civilian.setRiskStatus(true);
 					}
 				}
@@ -178,19 +169,5 @@ public class Questionnaire extends JFrame
 			}
 		});
 	}
-}
-=======
-						Civilian.setRiskStatus(nOfSymptoms);
-					}
-				}
+
 					
-				}
-			}
-		});
-		
-		
-			
-			
-			
-		}
->>>>>>> f5fd9698dd887eab696622b7963f35d91ae12823
