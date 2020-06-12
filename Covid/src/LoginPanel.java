@@ -114,7 +114,7 @@ public class LoginPanel {
 							if(aCivilian.getUsername().equals(textField_3.getText())||textField_3.equals(admin.getUsername())){
 								JOptionPane.showMessageDialog(null, "Username already exists. Try again.");
 							}else {
-								Civilian c = new Civilian(textField_3.getText(), passwordField.getPassword().toString(), textField_2.getText(), 0, null);
+								Civilian c = new Civilian(textField_3.getText(), passwordField.getPassword().toString(), textField_2.getText(), false, null);
 								admin.addCivilian(c);
 							}
 						}

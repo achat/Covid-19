@@ -38,7 +38,7 @@ public class DoctorGUI extends JFrame {
 		
 		for(Civilian aCivilian: doctor.viewPatients()){
 			textArea.setText(aCivilian.getName() + "\n");
-			if(aCivilian.getRiskStatus()> 6){
+			if(aCivilian.getRiskStatus()){
 				textArea_1.setText(aCivilian.getName() + "\n");
 			}
 		}

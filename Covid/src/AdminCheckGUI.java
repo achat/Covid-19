@@ -38,4 +38,5 @@ public class AdminCheckGUI extends JFrame {
 			}
 			
 		}
+	}
 }
