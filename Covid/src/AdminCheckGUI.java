@@ -6,13 +6,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class adminCheckGUI extends JFrame {
+public class AdminCheckGUI extends JFrame {
 	private JLabel adminID;
 	private JTextField adminIDText;
 	private JButton okBtn;
 	private Admin admin;
 	
-	public adminCheckGUI(Admin admin){
+	public AdminCheckGUI(Admin admin){
 	    this.admin = admin;
 		JLabel adminID = new JLabel("Admin ID:");
 		JTextField adminIDText = new JTextField();

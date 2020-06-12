@@ -56,11 +56,11 @@ public class LoginPanel {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource().equals(btnSignIn)){
 					if(textField.getText().equals(admin.getUsername())&& passwordField.getPassword().toString().equals(admin.getPassword())){
-						adminCheckGUI aGUI = new adminCheckGUI(admin);
+						AdminCheckGUI aGUI = new AdminCheckGUI(admin);
 					}
 					for(Civilian aCivilian: admin.getCiviliansList()){
 						if(aCivilian.getUsername().equals(textField.getText()) && aCivilian.getPassword().equals(passwordField.getPassword().toString())){
-							CivilianGUI cGUI = new CivilianGUI(aCivilian);
+							Civilian_GUI cGUI = new Civilian_GUI(aCivilian);
 						}
 					}
 					for(Doctor aDoctor: admin.getDoctorsList()){
