@@ -4,9 +4,6 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JCheckBox;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,6 +14,7 @@ public class Questionnaire extends JFrame
 
 	private Civilian civilian;
 	private int nOfSymptoms=0;
+	private int q1, q2, q3, q4, q5, q6, q7, q8, q = 0;
 	
 	
 	public Questionnaire(Civilian civilian) {
@@ -70,7 +68,9 @@ public class Questionnaire extends JFrame
 		c7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(c7.isSelected()) {
-					nOfSymptoms++;
+					q7 = 1;
+				}else{
+					q7 = 0;
 				}
 			}
 		}); 
@@ -80,7 +80,9 @@ public class Questionnaire extends JFrame
 		c.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(c.isSelected()) {
-					nOfSymptoms++;
+					q = 1;
+				}else{
+					q = 0;
 				}
 			}
 		}); 
@@ -90,7 +92,9 @@ public class Questionnaire extends JFrame
 		c1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(c1.isSelected()) {
-					nOfSymptoms++;
+					q1 = 1;
+				}else {
+					q1 = 0;
 				}
 			}
 		}); 
@@ -100,7 +104,9 @@ public class Questionnaire extends JFrame
 		c2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(c2.isSelected()) {
-					nOfSymptoms++;
+					q2 = 1;
+				}else {
+					q2 = 0;
 				}
 			}
 		}); 
@@ -110,7 +116,9 @@ public class Questionnaire extends JFrame
 		c3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(c3.isSelected()) {
-					nOfSymptoms++;
+					q3 = 1;
+				}else{
+					q3 = 0;
 				}
 			}
 		}); 
@@ -120,7 +128,9 @@ public class Questionnaire extends JFrame
 		c4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(c4.isSelected()) {
-					nOfSymptoms++;
+					q4 = 1;
+				}else{
+					q4 = 0;
 				}
 			}
 		}); 
@@ -130,7 +140,9 @@ public class Questionnaire extends JFrame
 		c5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(c5.isSelected()) {
-					nOfSymptoms++;
+					q5 = 1;
+				}else{
+					q5 = 0;
 				}
 			}
 		}); 
@@ -140,7 +152,9 @@ public class Questionnaire extends JFrame
 		c6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(c6.isSelected()) {
-					nOfSymptoms++;
+					q6 = 1;
+				}else{
+					q6 = 0;
 				}
 			}
 		}); 
@@ -150,24 +164,26 @@ public class Questionnaire extends JFrame
 		c8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(c8.isSelected()) {
-					nOfSymptoms++;
+					q8 = 1;
+				}else{
+					q8 = 0;
 				}
 			}
 		}); 
-		
+		nOfSymptoms = q + q1 + q2 + q3 + q4 + q5 + q6 + q7 + q8;
 		JButton btn = new JButton("Submit");
 		getContentPane().add(btn, "18, 18");
 		btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent i) {
 				if(i.getSource().equals(btn)){
 					if(nOfSymptoms >= 6) {
-
 						civilian.setRiskStatus(true);
 					}
 				}
+				dispose();
 					
 			}
 		});
 	}
-
+}
 					

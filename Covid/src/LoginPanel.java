@@ -60,7 +60,7 @@ public class LoginPanel {
 					}
 					for(Civilian aCivilian: admin.getCiviliansList()){
 						if(aCivilian.getUsername().equals(textField.getText()) && aCivilian.getPassword().equals(passwordField.getPassword().toString())){
-							Civilian_GUI cGUI = new Civilian_GUI(aCivilian);
+							Civilian_GUI cGUI = new Civilian_GUI(aCivilian, admin);
 						}
 					}
 					for(Doctor aDoctor: admin.getDoctorsList()){

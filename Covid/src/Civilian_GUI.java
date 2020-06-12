@@ -1,84 +1,99 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
 import javax.swing.JFrame;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.layout.FormSpecs;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
-
-import java.awt.event.ActionEvent;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JButton;
 import java.awt.event.ActionListener;
-
-import javax.swing.JCheckBox;
+import java.awt.event.ActionEvent;
 
 public class Civilian_GUI extends JFrame {
-	public Civilian_GUI(Civilian civilian) {
-		getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,},
-			new RowSpec[] {
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,}));
+
+	private JPanel contentPane;
+	private JTextField textField;
+	private Civilian civilian;
+	private Admin admin;
+	private JTextField textField_1;
+
+
+	public Civilian_GUI(Civilian civilian, Admin admin) {
+		setTitle("Status Check");
+		this.civilian = civilian;
+		this.admin = admin;
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 250, 184);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
 		
-		JLabel lblNewLabel = new JLabel("Choose your personal Doctor from the list: ");
-		getContentPane().add(lblNewLabel, "14, 2");
+		JLabel lblTypeYourDoctors = new JLabel("Type your Doctor's name:");
 		
+		textField = new JTextField();
+		textField.setColumns(10);
+		for(Doctor aDoctor: admin.getDoctorsList()){
+			if(aDoctor.getName().equals(textField.getText())){
+				civilian.chooseDoctor(aDoctor);
+				aDoctor.addPatient(civilian);
+				JOptionPane.showMessageDialog(null, "Doctor successfully selected.");
+			}else{
+				JOptionPane.showMessageDialog(null, "Name not found.");
+			}
+		}
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("Doctor 1� 1");
-		getContentPane().add(chckbxNewCheckBox, "14, 4");
+		JButton btnAnswerCovidQuestionnaire = new JButton("Answer COVID_19 Questionnaire");
+		btnAnswerCovidQuestionnaire.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Questionnaire q = new Questionnaire(civilian);
+			}
+		});
 		
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Doctor 2� 2");
-		getContentPane().add(chckbxNewCheckBox_1, "14, 6");
-		
-		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("Doctor 3� 3");
-		getContentPane().add(chckbxNewCheckBox_2, "14, 8");
-		
-		JCheckBox chckbxNewCheckBox_3 = new JCheckBox("Doctor 4� 4");
-		getContentPane().add(chckbxNewCheckBox_3, "14, 10");
-		
-		JCheckBox chckbxNewCheckBox_4 = new JCheckBox("Doctor 5� 5");
-		getContentPane().add(chckbxNewCheckBox_4, "14, 12");
-		
-		JCheckBox chckbxNewCheckBox_5 = new JCheckBox("Doctor 6� 6");
-		getContentPane().add(chckbxNewCheckBox_5, "14, 14");
-		
-		JCheckBox chckbxNewCheckBox_6 = new JCheckBox("Doctor 7� 7");
-		getContentPane().add(chckbxNewCheckBox_6, "14, 16");
-		
-	}}
-		
-		
-	
+		textField_1 = new JTextField();
+		textField_1.setEditable(false);
+		textField_1.setColumns(10);
+		if(civilian.getRiskStatus()){
+			textField_1.setText("You are in high risk of being infected with COVID-19. You must communicate with your doctor and take appropiate measures.");
+		}else{
+			textField_1.setText("You are in low risk of being infected with COVID-19. Keep your healthy habits and stay safe.");
+		}
 			
-					 
-				 
-			 
-		 
-
-
-
+		
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblTypeYourDoctors)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(btnAnswerCovidQuestionnaire))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(textField_1)))
+					.addContainerGap(4, Short.MAX_VALUE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(21)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblTypeYourDoctors)
+						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addComponent(btnAnswerCovidQuestionnaire)
+					.addGap(18)
+					.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(131, Short.MAX_VALUE))
+		);
+		contentPane.setLayout(gl_contentPane);
+	}
+}
