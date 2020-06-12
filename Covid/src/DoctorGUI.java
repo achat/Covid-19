@@ -1,18 +1,12 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import java.awt.Font;
-
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JList;
-import java.awt.List;
 import javax.swing.JTextArea;
 
 public class DoctorGUI extends JFrame {
